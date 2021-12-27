@@ -113,6 +113,8 @@ extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        fieldViewModel.updateHomeScreenButton(index: indexPath.row)
+        
         navigationController?.popViewController(animated: true)
     }
 }

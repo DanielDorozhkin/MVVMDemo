@@ -7,22 +7,25 @@
 
 import Foundation
 
-protocol FieldViewProtocol: AnyObject {
-    func appearSource()
-    func appearError()
-}
-
 class FieldViewModel {
     var tableSource = [String]()
     let requestModel = RequestModel()
     
     weak var fieldDelegate: FieldViewProtocol?
+    weak var homeDelegate: HomeViewProtocol?
     
     func sourceRequestFrom(_ text: String?) {
         tableSource.removeAll()
         
         requestModel.requestString = text
         requestConfigure()
+    }
+    
+    func updateHomeScreenButton(index: Int) {
+        let number = tableSource[index]
+        let text = "\(number)"
+        
+        homeDelegate?.updateButtonText(text)
     }
     
     private func requestConfigure() {
@@ -40,4 +43,14 @@ class FieldViewModel {
             tableSource.append(item)
         }
     }
+}
+
+//MARK: -PROTOCOLS
+protocol FieldViewProtocol: AnyObject {
+    func appearSource()
+    func appearError()
+}
+
+protocol HomeViewProtocol: AnyObject {
+    func updateButtonText(_ text: String)
 }
