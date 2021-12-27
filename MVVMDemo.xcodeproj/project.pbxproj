@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110332B22779DD8800694093 /* EzImageLoader in Frameworks */ = {isa = PBXBuildFile; productRef = 110332B12779DD8800694093 /* EzImageLoader */; };
 		1108E26B2779BD2C004E0C19 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26A2779BD2C004E0C19 /* RequestModel.swift */; };
 		1108E26E2779C809004E0C19 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26D2779C809004E0C19 /* UIView+.swift */; };
 		1108E2702779D221004E0C19 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26F2779D221004E0C19 /* UIColor+.swift */; };
@@ -49,12 +50,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110332B22779DD8800694093 /* EzImageLoader in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		110332B32779DEB200694093 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11CD35A32778C601000FDE02 /* Field */,
+				11CD359A2778C190000FDE02 /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1108E26C2779BD30004E0C19 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +177,7 @@
 			children = (
 				11D61A132778B155002D989E /* Info.plist */,
 				1108E26C2779BD30004E0C19 /* Models */,
+				110332B32779DEB200694093 /* Views */,
 				11D61A1D2778BACD002D989E /* ViewModels */,
 				11CD35982778C036000FDE02 /* Utilites */,
 			);
@@ -176,8 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				11CD35A52778CBF9000FDE02 /* FieldViewModel.swift */,
-				11CD35A32778C601000FDE02 /* Field */,
-				11CD359A2778C190000FDE02 /* Home */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -198,6 +208,9 @@
 			dependencies = (
 			);
 			name = MVVMDemo;
+			packageProductDependencies = (
+				110332B12779DD8800694093 /* EzImageLoader */,
+			);
 			productName = MVVMDemo;
 			productReference = 11D61A022778B153002D989E /* MVVMDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -226,6 +239,9 @@
 				Base,
 			);
 			mainGroup = 11D619F92778B153002D989E;
+			packageReferences = (
+				110332B02779DD8800694093 /* XCRemoteSwiftPackageReference "EzImageLoader" */,
+			);
 			productRefGroup = 11D61A032778B153002D989E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -476,6 +492,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		110332B02779DD8800694093 /* XCRemoteSwiftPackageReference "EzImageLoader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/asaday/EzImageLoader.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		110332B12779DD8800694093 /* EzImageLoader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 110332B02779DD8800694093 /* XCRemoteSwiftPackageReference "EzImageLoader" */;
+			productName = EzImageLoader;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 11D619FA2778B153002D989E /* Project object */;
 }
