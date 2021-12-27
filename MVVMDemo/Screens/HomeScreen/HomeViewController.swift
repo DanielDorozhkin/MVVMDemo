@@ -7,11 +7,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, HomeViewProtocol {
+class HomeViewController: UIViewController {
     
     //MARK: -OUTLETS
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var passedButton: UIButton!
+    @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var passedButton: UIButton!
     
     private let homeViewModel : HomeViewModel
     private var colorTapCounter : Int = 0
@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     //MARK: -INIT
     required init(viewModel: HomeViewModel) {
         self.homeViewModel = viewModel
-        super.init(nibName: "HomeViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
         
         homeViewModel.homeDelegate = self
     }
@@ -70,22 +70,18 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     }
     
     //MARK: -UI UPDATE
-    func updateButtonText(_ text: String) {
-        startButton.setTitle(text, for: .normal)
-    }
-    
     private func passedButtonAnimation() {
         guard let label = self.passedButton.titleLabel else { return }
         label.pulsate()
     }
     
     //MARK: -ACTION
-    @IBAction func startButtonTapped(_ sender: UIButton) {
+    @IBAction private func startButtonTapped(_ sender: UIButton) {
         let fieldVC = FieldViewController(viewModel: homeViewModel)
         self.navigationController?.pushViewController(fieldVC, animated: true)
     }
     
-    @IBAction func passedButtonTapped(_ sender: UIButton) {
+    @IBAction private func passedButtonTapped(_ sender: UIButton) {
         let currentNumber = getCurrentNumber()
         let model = ImagesViewModel(number: currentNumber)
         
@@ -123,5 +119,12 @@ extension HomeViewController {
             colorTapCounter = 0
             view.backgroundColor = .random()
         }
+    }
+}
+
+//MARK: -HOME PROTOCOL
+extension HomeViewController: HomeViewProtocol {
+    func updateButtonText(_ text: String) {
+        startButton.setTitle(text, for: .normal)
     }
 }

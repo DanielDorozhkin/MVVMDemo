@@ -67,24 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		110332B32779DEB200694093 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				11CD35A32778C601000FDE02 /* Field */,
-				11CD359A2778C190000FDE02 /* Home */,
-				110332B82779DF8900694093 /* Images */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		110332B82779DF8900694093 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				11F9EF8A277A148D0018F8A6 /* Views */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		1108E26C2779BD30004E0C19 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,39 +94,24 @@
 			path = AppDelegates;
 			sourceTree = "<group>";
 		};
-		11CD359A2778C190000FDE02 /* Home */ = {
+		11CD359B2778C1A1000FDE02 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				11CD359B2778C1A1000FDE02 /* Views */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		11CD359B2778C1A1000FDE02 /* Views */ = {
-			isa = PBXGroup;
-			children = (
+				11CD35A52778CBF9000FDE02 /* HomeViewModel.swift */,
 				11D61A192778BAC5002D989E /* HomeViewController.swift */,
 				11D61A1A2778BAC5002D989E /* HomeViewController.xib */,
 			);
-			path = Views;
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
-		11CD35A32778C601000FDE02 /* Field */ = {
-			isa = PBXGroup;
-			children = (
-				11CD35A42778CBE7000FDE02 /* Views */,
-			);
-			path = Field;
-			sourceTree = "<group>";
-		};
-		11CD35A42778CBE7000FDE02 /* Views */ = {
+		11CD35A42778CBE7000FDE02 /* FieldScreen */ = {
 			isa = PBXGroup;
 			children = (
 				11CD359E2778C5C9000FDE02 /* FieldViewController.swift */,
 				11CD359F2778C5C9000FDE02 /* FieldViewController.xib */,
 				11CD35AD2778D06D000FDE02 /* Cells */,
 			);
-			path = Views;
+			path = FieldScreen;
 			sourceTree = "<group>";
 		};
 		11CD35A72778CDE4000FDE02 /* Materials */ = {
@@ -196,20 +163,10 @@
 			children = (
 				11D61A132778B155002D989E /* Info.plist */,
 				1108E26C2779BD30004E0C19 /* Models */,
-				110332B32779DEB200694093 /* Views */,
-				11D61A1D2778BACD002D989E /* ViewModels */,
+				11F9EF8B277A2B2A0018F8A6 /* Screens */,
 				11CD35982778C036000FDE02 /* Utilites */,
 			);
 			path = MVVMDemo;
-			sourceTree = "<group>";
-		};
-		11D61A1D2778BACD002D989E /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				11CD35A52778CBF9000FDE02 /* HomeViewModel.swift */,
-				11F9EF882779F5510018F8A6 /* ImagesViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		11F9EF852779E6F40018F8A6 /* Cell */ = {
@@ -221,14 +178,25 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		11F9EF8A277A148D0018F8A6 /* Views */ = {
+		11F9EF8A277A148D0018F8A6 /* ImagesScreen */ = {
 			isa = PBXGroup;
 			children = (
+				11F9EF882779F5510018F8A6 /* ImagesViewModel.swift */,
 				110332B42779DF8000694093 /* ImagesViewController.swift */,
 				110332B52779DF8000694093 /* ImagesViewController.xib */,
 				11F9EF852779E6F40018F8A6 /* Cell */,
 			);
-			path = Views;
+			path = ImagesScreen;
+			sourceTree = "<group>";
+		};
+		11F9EF8B277A2B2A0018F8A6 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				11CD35A42778CBE7000FDE02 /* FieldScreen */,
+				11CD359B2778C1A1000FDE02 /* HomeScreen */,
+				11F9EF8A277A148D0018F8A6 /* ImagesScreen */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

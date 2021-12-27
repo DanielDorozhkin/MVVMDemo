@@ -7,20 +7,20 @@
 
 import UIKit
 
-class FieldViewController: UIViewController, FieldViewProtocol {
+class FieldViewController: UIViewController {
     
     //MARK: -OUTLETS
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var goButton: UIButton!
     
-    @IBOutlet weak var numbersTableView: UITableView!
+    @IBOutlet private weak var numbersTableView: UITableView!
     
     private let homeViewModel: HomeViewModel
     
     //MARK: -INIT
     required init(viewModel: HomeViewModel) {
         self.homeViewModel = viewModel
-        super.init(nibName: "FieldViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
         
         homeViewModel.fieldDelegate = self
     }
@@ -41,12 +41,14 @@ class FieldViewController: UIViewController, FieldViewProtocol {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         UIUpdate()
     }
     
     //MARK: -CONFIGURE
     private func VCConfigure() {
-        setKeyboardHidding()
+        setKeyboardHiding()
         UIConfigure()
         
         tableViewConfigure()
@@ -64,10 +66,10 @@ class FieldViewController: UIViewController, FieldViewProtocol {
         goButton.setTitleColor(.black, for: .normal)
         
         let views : [UIView] = [goButton, textField]
-        views.forEach({
+        views.forEach {
             $0.layer.cornerRadius = 10
             $0.layer.borderWidth = 2
-        })
+        }
     }
     
     //MARK: -UI UPDATE
@@ -77,21 +79,9 @@ class FieldViewController: UIViewController, FieldViewProtocol {
         }
     }
     
-    func appearSource() {
-        view.backgroundColor = .white
-        
-        numbersTableView.isHidden = false
-        numbersTableView.reloadData()
-    }
-    
-    func appearError() {
-        view.backgroundColor = .red
-        
-        numbersTableView.isHidden = true
-    }
     
     //MARK: -ACTION
-    @IBAction func goButtonTapped(_ sender: UIButton) {
+    @IBAction private func goButtonTapped(_ sender: UIButton) {
         homeViewModel.sourceRequestFrom(textField.text)
     }
 }
@@ -99,7 +89,7 @@ class FieldViewController: UIViewController, FieldViewProtocol {
 //MARK: -TABLE VIEW
 extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeViewModel.tableSource.count
+        return homeViewModel.numberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,8 +103,24 @@ extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        homeViewModel.updateHomeScreenButton(index: indexPath.row)
+        homeViewModel.didSelectRowAt(indexPath: indexPath)
         
         navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK: -FIELD VIEW PROTOCOL
+extension FieldViewController: FieldViewProtocol {
+    func appearSource() {
+        view.backgroundColor = .white
+        
+        numbersTableView.isHidden = false
+        numbersTableView.reloadData()
+    }
+    
+    func appearError() {
+        view.backgroundColor = .red
+        
+        numbersTableView.isHidden = true
     }
 }

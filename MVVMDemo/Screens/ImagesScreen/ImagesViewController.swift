@@ -7,17 +7,17 @@
 
 import UIKit
 
-class ImagesViewController: UIViewController, ImageViewProtocol {
+class ImagesViewController: UIViewController {
     
     //MARK: -OUTLETS
-    @IBOutlet weak var imagesCollectionView: UICollectionView!
+    @IBOutlet private weak var imagesCollectionView: UICollectionView!
     
     private let imageViewModel : ImagesViewModel
     
     //MARK: -INIT
     required init(viewModel: ImagesViewModel) {
         self.imageViewModel = viewModel
-        super.init(nibName: "ImagesViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     convenience init() {
@@ -49,13 +49,6 @@ class ImagesViewController: UIViewController, ImageViewProtocol {
     }
     
     //MARK: -UI UPDATE
-    func deleteCellOn(_ indexPath: Int) {
-        let index = IndexPath(item: indexPath, section: 0)
-        imageViewModel.imagesCount -= 1
-        
-        cellAnimation(index)
-    }
-    
     private func cellAnimation(_ indexPath: IndexPath) {
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
             guard let self = self else { return }
@@ -85,4 +78,15 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         return cell
     }
+}
+
+//MARK: -IMAGE PROTOCOL
+extension ImagesViewController: ImageViewProtocol {
+    func deleteCellOn(_ indexPath: Int) {
+        let index = IndexPath(item: indexPath, section: 0)
+        imageViewModel.imagesCount -= 1
+        
+        cellAnimation(index)
+    }
+    
 }

@@ -10,7 +10,7 @@ import UIKit
 class ImageCollectionViewCell: UICollectionViewCell {
     
     //MARK: -OUTLETS
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     
     private var indexPath : Int = 0
     private var viewModel : ImagesViewModel!
@@ -38,7 +38,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.addGestureRecognizer(longPress)
     }
     
-    @objc func deleteCell(gestureReconizer: UILongPressGestureRecognizer) {
+    @objc private func deleteCell(gestureReconizer: UILongPressGestureRecognizer) {
         if gestureReconizer.state == .ended {
             indexUpdate()
             imageViewDelegate?.deleteCellOn(indexPath)

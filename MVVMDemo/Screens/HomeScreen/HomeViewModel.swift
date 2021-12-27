@@ -54,3 +54,18 @@ protocol FieldViewProtocol: AnyObject {
 protocol HomeViewProtocol: AnyObject {
     func updateButtonText(_ text: String)
 }
+
+extension HomeViewModel: CollectionViewModelProtocol {
+    func numberOfRowsInSection(section: Int) -> Int {
+        return tableSource.count
+    }
+    
+    func didSelectRowAt(indexPath: IndexPath) {
+        self.updateHomeScreenButton(index: indexPath.row)
+    }
+}
+
+protocol CollectionViewModelProtocol {
+    func numberOfRowsInSection(section: Int) -> Int
+    func didSelectRowAt(indexPath: IndexPath)
+}
