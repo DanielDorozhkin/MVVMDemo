@@ -13,15 +13,15 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var passedButton: UIButton!
     
-    private let fieldViewModel : FieldViewModel
+    private let homeViewModel : HomeViewModel
     private var colorTapCounter : Int = 0
     
     //MARK: -INIT
-    required init(viewModel: FieldViewModel) {
-        self.fieldViewModel = viewModel
+    required init(viewModel: HomeViewModel) {
+        self.homeViewModel = viewModel
         super.init(nibName: "HomeViewController", bundle: nil)
         
-        fieldViewModel.homeDelegate = self
+        homeViewModel.homeDelegate = self
     }
     
     convenience init() {
@@ -81,8 +81,26 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     
     //MARK: -ACTION
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        let fieldVC = FieldViewController(viewModel: fieldViewModel)
+        let fieldVC = FieldViewController(viewModel: homeViewModel)
         self.navigationController?.pushViewController(fieldVC, animated: true)
+    }
+    
+    @IBAction func passedButtonTapped(_ sender: UIButton) {
+        let currentNumber = getCurrentNumber()
+        let model = ImagesViewModel(number: currentNumber)
+        
+        let imagesVC = ImagesViewController(viewModel: model)
+        self.navigationController?.pushViewController(imagesVC, animated: true)
+    }
+    
+    private func getCurrentNumber() -> Int {
+        if let text = startButton.titleLabel?.text {
+            if let num = Int(text) {
+                return num
+            }
+        }
+        
+        return 0
     }
 }
 

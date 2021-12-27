@@ -15,14 +15,14 @@ class FieldViewController: UIViewController, FieldViewProtocol {
     
     @IBOutlet weak var numbersTableView: UITableView!
     
-    private let fieldViewModel: FieldViewModel
+    private let homeViewModel: HomeViewModel
     
     //MARK: -INIT
-    required init(viewModel: FieldViewModel) {
-        self.fieldViewModel = viewModel
+    required init(viewModel: HomeViewModel) {
+        self.homeViewModel = viewModel
         super.init(nibName: "FieldViewController", bundle: nil)
         
-        viewModel.fieldDelegate = self
+        homeViewModel.fieldDelegate = self
     }
     
     convenience init() {
@@ -72,7 +72,7 @@ class FieldViewController: UIViewController, FieldViewProtocol {
     
     //MARK: -UI UPDATE
     private func UIUpdate() {
-        if let request = fieldViewModel.requestModel.requestString {
+        if let request = homeViewModel.requestModel.requestString {
             textField.text = request
         }
     }
@@ -92,28 +92,28 @@ class FieldViewController: UIViewController, FieldViewProtocol {
     
     //MARK: -ACTION
     @IBAction func goButtonTapped(_ sender: UIButton) {
-        fieldViewModel.sourceRequestFrom(textField.text)
+        homeViewModel.sourceRequestFrom(textField.text)
     }
 }
 
 //MARK: -TABLE VIEW
 extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fieldViewModel.tableSource.count
+        return homeViewModel.tableSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = numbersTableView.dequeueReusableCell(withIdentifier: "numberCell", for: indexPath) as? NumberTableViewCell else {
             return UITableViewCell()
         }
-        let numberItem = fieldViewModel.tableSource[indexPath.row]
+        let numberItem = homeViewModel.tableSource[indexPath.row]
         
         cell.configure(numberItem)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        fieldViewModel.updateHomeScreenButton(index: indexPath.row)
+        homeViewModel.updateHomeScreenButton(index: indexPath.row)
         
         navigationController?.popViewController(animated: true)
     }

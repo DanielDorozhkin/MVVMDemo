@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		110332B22779DD8800694093 /* EzImageLoader in Frameworks */ = {isa = PBXBuildFile; productRef = 110332B12779DD8800694093 /* EzImageLoader */; };
+		110332B62779DF8000694093 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110332B42779DF8000694093 /* ImagesViewController.swift */; };
+		110332B72779DF8000694093 /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110332B52779DF8000694093 /* ImagesViewController.xib */; };
 		1108E26B2779BD2C004E0C19 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26A2779BD2C004E0C19 /* RequestModel.swift */; };
 		1108E26E2779C809004E0C19 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26D2779C809004E0C19 /* UIView+.swift */; };
 		1108E2702779D221004E0C19 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26F2779D221004E0C19 /* UIColor+.swift */; };
 		11CD35A02778C5C9000FDE02 /* FieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CD359E2778C5C9000FDE02 /* FieldViewController.swift */; };
 		11CD35A12778C5C9000FDE02 /* FieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11CD359F2778C5C9000FDE02 /* FieldViewController.xib */; };
-		11CD35A62778CBF9000FDE02 /* FieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CD35A52778CBF9000FDE02 /* FieldViewModel.swift */; };
+		11CD35A62778CBF9000FDE02 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CD35A52778CBF9000FDE02 /* HomeViewModel.swift */; };
 		11CD35A92778CDF9000FDE02 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CD35A82778CDF9000FDE02 /* UIViewController+.swift */; };
 		11CD35B02778D3B4000FDE02 /* NumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CD35AE2778D3B4000FDE02 /* NumberTableViewCell.swift */; };
 		11CD35B12778D3B4000FDE02 /* NumberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11CD35AF2778D3B4000FDE02 /* NumberTableViewCell.xib */; };
@@ -23,15 +25,20 @@
 		11D61A122778B155002D989E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D61A102778B155002D989E /* LaunchScreen.storyboard */; };
 		11D61A1B2778BAC5002D989E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D61A192778BAC5002D989E /* HomeViewController.swift */; };
 		11D61A1C2778BAC5002D989E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D61A1A2778BAC5002D989E /* HomeViewController.xib */; };
+		11F9EF832779E6F00018F8A6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F9EF812779E6F00018F8A6 /* ImageCollectionViewCell.swift */; };
+		11F9EF842779E6F00018F8A6 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11F9EF822779E6F00018F8A6 /* ImageCollectionViewCell.xib */; };
+		11F9EF892779F5510018F8A6 /* ImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F9EF882779F5510018F8A6 /* ImagesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		110332B42779DF8000694093 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
+		110332B52779DF8000694093 /* ImagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesViewController.xib; sourceTree = "<group>"; };
 		1108E26A2779BD2C004E0C19 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		1108E26D2779C809004E0C19 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		1108E26F2779D221004E0C19 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		11CD359E2778C5C9000FDE02 /* FieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewController.swift; sourceTree = "<group>"; };
 		11CD359F2778C5C9000FDE02 /* FieldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FieldViewController.xib; sourceTree = "<group>"; };
-		11CD35A52778CBF9000FDE02 /* FieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewModel.swift; sourceTree = "<group>"; };
+		11CD35A52778CBF9000FDE02 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		11CD35A82778CDF9000FDE02 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		11CD35AE2778D3B4000FDE02 /* NumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTableViewCell.swift; sourceTree = "<group>"; };
 		11CD35AF2778D3B4000FDE02 /* NumberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberTableViewCell.xib; sourceTree = "<group>"; };
@@ -43,6 +50,9 @@
 		11D61A132778B155002D989E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11D61A192778BAC5002D989E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		11D61A1A2778BAC5002D989E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		11F9EF812779E6F00018F8A6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		11F9EF822779E6F00018F8A6 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		11F9EF882779F5510018F8A6 /* ImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +72,17 @@
 			children = (
 				11CD35A32778C601000FDE02 /* Field */,
 				11CD359A2778C190000FDE02 /* Home */,
+				110332B82779DF8900694093 /* Images */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		110332B82779DF8900694093 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				11F9EF8A277A148D0018F8A6 /* Views */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		1108E26C2779BD30004E0C19 /* Models */ = {
@@ -187,9 +206,29 @@
 		11D61A1D2778BACD002D989E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				11CD35A52778CBF9000FDE02 /* FieldViewModel.swift */,
+				11CD35A52778CBF9000FDE02 /* HomeViewModel.swift */,
+				11F9EF882779F5510018F8A6 /* ImagesViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		11F9EF852779E6F40018F8A6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				11F9EF812779E6F00018F8A6 /* ImageCollectionViewCell.swift */,
+				11F9EF822779E6F00018F8A6 /* ImageCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		11F9EF8A277A148D0018F8A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				110332B42779DF8000694093 /* ImagesViewController.swift */,
+				110332B52779DF8000694093 /* ImagesViewController.xib */,
+				11F9EF852779E6F40018F8A6 /* Cell */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +298,9 @@
 				11D61A122778B155002D989E /* LaunchScreen.storyboard in Resources */,
 				11D61A0F2778B155002D989E /* Assets.xcassets in Resources */,
 				11D61A1C2778BAC5002D989E /* HomeViewController.xib in Resources */,
+				11F9EF842779E6F00018F8A6 /* ImageCollectionViewCell.xib in Resources */,
 				11CD35A12778C5C9000FDE02 /* FieldViewController.xib in Resources */,
+				110332B72779DF8000694093 /* ImagesViewController.xib in Resources */,
 				11CD35B12778D3B4000FDE02 /* NumberTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,11 +315,14 @@
 				11CD35B02778D3B4000FDE02 /* NumberTableViewCell.swift in Sources */,
 				11CD35A92778CDF9000FDE02 /* UIViewController+.swift in Sources */,
 				11D61A062778B153002D989E /* AppDelegate.swift in Sources */,
+				110332B62779DF8000694093 /* ImagesViewController.swift in Sources */,
 				11D61A082778B153002D989E /* SceneDelegate.swift in Sources */,
+				11F9EF892779F5510018F8A6 /* ImagesViewModel.swift in Sources */,
 				11CD35A02778C5C9000FDE02 /* FieldViewController.swift in Sources */,
+				11F9EF832779E6F00018F8A6 /* ImageCollectionViewCell.swift in Sources */,
 				11D61A1B2778BAC5002D989E /* HomeViewController.swift in Sources */,
 				1108E26E2779C809004E0C19 /* UIView+.swift in Sources */,
-				11CD35A62778CBF9000FDE02 /* FieldViewModel.swift in Sources */,
+				11CD35A62778CBF9000FDE02 /* HomeViewModel.swift in Sources */,
 				1108E26B2779BD2C004E0C19 /* RequestModel.swift in Sources */,
 				1108E2702779D221004E0C19 /* UIColor+.swift in Sources */,
 			);

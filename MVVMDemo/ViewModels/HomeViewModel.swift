@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FieldViewModel {
+class HomeViewModel {
     var tableSource = [String]()
     let requestModel = RequestModel()
     

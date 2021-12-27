@@ -41,6 +41,9 @@
                     <state key="normal" title="Data passed!">
                         <color key="titleColor" systemColor="labelColor"/>
                     </state>
+                    <connections>
+                        <action selector="passedButtonTapped:" destination="-1" eventType="touchUpInside" id="IGH-Wa-PFy"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
