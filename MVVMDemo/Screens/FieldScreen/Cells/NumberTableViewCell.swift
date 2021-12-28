@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Reusable
 
-class NumberTableViewCell: UITableViewCell {
+final class NumberTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet private weak var cellLbl: UILabel!
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RequestModel {
+final class RequestModel {
     var requestString : String?
     
     func validateRequest() -> Int? {

@@ -7,12 +7,16 @@
 
 import Foundation
 
-class HomeViewModel {
+final class HomeViewModel {
     var tableSource = [String]()
     let requestModel = RequestModel()
     
     weak var fieldDelegate: FieldViewProtocol?
     weak var homeDelegate: HomeViewProtocol?
+    
+    var fieldRequestString : String? {
+        return requestModel.requestString
+    }
     
     func sourceRequestFrom(_ text: String?) {
         tableSource.removeAll()

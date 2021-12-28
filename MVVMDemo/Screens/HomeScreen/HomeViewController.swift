@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Reusable
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     //MARK: -OUTLETS
     @IBOutlet private weak var startButton: UIButton!
@@ -36,19 +37,17 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VCConfigure()
+        UIConfigure()
+        colorTapConfigure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         passedButtonAnimation()
     }
     
     //MARK: -VC CONFIGURE
-    private func VCConfigure() {
-        colorTapConfigure()
-        UIConfigure()
-    }
-    
     private func UIConfigure() {
         startButtonConfigure()
         passedButtonConfigure()

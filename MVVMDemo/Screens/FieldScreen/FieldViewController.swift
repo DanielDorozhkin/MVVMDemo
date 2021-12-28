@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FieldViewController: UIViewController {
+final class FieldViewController: UIViewController {
     
     //MARK: -OUTLETS
     @IBOutlet private weak var textField: UITextField!
@@ -37,7 +37,9 @@ class FieldViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        VCConfigure()
+        UIConfigure()
+        setKeyboardHiding()
+        tableViewConfigure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,15 +49,8 @@ class FieldViewController: UIViewController {
     }
     
     //MARK: -CONFIGURE
-    private func VCConfigure() {
-        setKeyboardHiding()
-        UIConfigure()
-        
-        tableViewConfigure()
-    }
-    
     private func tableViewConfigure() {
-        numbersTableView.register(UINib(nibName: "NumberTableViewCell", bundle: nil), forCellReuseIdentifier: "numberCell")
+        numbersTableView.register(cellType: NumberTableViewCell.self)
         
         numbersTableView.delegate = self
         numbersTableView.dataSource = self
@@ -74,9 +69,7 @@ class FieldViewController: UIViewController {
     
     //MARK: -UI UPDATE
     private func UIUpdate() {
-        if let request = homeViewModel.requestModel.requestString {
-            textField.text = request
-        }
+        textField.text = homeViewModel.fieldRequestString
     }
     
     
@@ -93,9 +86,7 @@ extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = numbersTableView.dequeueReusableCell(withIdentifier: "numberCell", for: indexPath) as? NumberTableViewCell else {
-            return UITableViewCell()
-        }
+        let cell : NumberTableViewCell = numbersTableView.dequeueReusableCell(for: indexPath)
         let numberItem = homeViewModel.tableSource[indexPath.row]
         
         cell.configure(numberItem)
@@ -104,7 +95,6 @@ extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         homeViewModel.didSelectRowAt(indexPath: indexPath)
-        
         navigationController?.popViewController(animated: true)
     }
 }

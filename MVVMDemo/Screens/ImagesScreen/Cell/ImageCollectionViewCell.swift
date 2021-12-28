@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Reusable
 
-class ImageCollectionViewCell: UICollectionViewCell {
+final class ImageCollectionViewCell: UICollectionViewCell, NibReusable {
     
     //MARK: -OUTLETS
     @IBOutlet private weak var imageView: UIImageView!

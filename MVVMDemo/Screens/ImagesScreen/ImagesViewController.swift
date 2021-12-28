@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImagesViewController: UIViewController {
+final class ImagesViewController: UIViewController {
     
     //MARK: -OUTLETS
     @IBOutlet private weak var imagesCollectionView: UICollectionView!
@@ -32,20 +32,15 @@ class ImagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VCConfigure()
-    }
-    
-    //MARK: -VC CONFIGURE
-    private func VCConfigure() {
         collectionConfigure()
     }
     
+    //MARK: -VC CONFIGURE
     private func collectionConfigure() {
         imagesCollectionView.delegate = self
         imagesCollectionView.dataSource = self
         
-        let nib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
-        imagesCollectionView.register(nib, forCellWithReuseIdentifier: "imageCell")
+        imagesCollectionView.register(cellType: ImageCollectionViewCell.self)
     }
     
     //MARK: -UI UPDATE
@@ -53,9 +48,9 @@ class ImagesViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
             guard let self = self else { return }
             
-            if let cell = self.imagesCollectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell {
-                cell.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
-            }
+            let cell : ImageCollectionViewCell = self.imagesCollectionView.dequeueReusableCell(for: indexPath)
+            cell.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+            
         }, completion: { [weak self] _ in
             self?.imagesCollectionView.deleteItems(at: [indexPath])
         })
@@ -69,9 +64,7 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = imagesCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ImageCollectionViewCell else {
-            return UICollectionViewCell()
-        }
+        let cell : ImageCollectionViewCell = imagesCollectionView.dequeueReusableCell(for: indexPath)
         
         cell.imageViewDelegate = self
         cell.configure(imageViewModel, index: indexPath.row)
@@ -88,5 +81,4 @@ extension ImagesViewController: ImageViewProtocol {
         
         cellAnimation(index)
     }
-    
 }

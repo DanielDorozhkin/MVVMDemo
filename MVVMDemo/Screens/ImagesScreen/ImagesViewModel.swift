@@ -10,7 +10,7 @@ import EzImageLoader
 import EzHTTP
 import UIKit
 
-class ImagesViewModel {
+final class ImagesViewModel {
     var imagesCount: Int
     
     init(number: Int) {
