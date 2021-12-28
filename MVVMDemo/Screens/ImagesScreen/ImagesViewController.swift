@@ -13,6 +13,7 @@ final class ImagesViewController: UIViewController {
     @IBOutlet private weak var imagesCollectionView: UICollectionView!
     
     private let imageViewModel : ImagesViewModel
+    weak var coordinator: MainCoordinator?
     
     //MARK: -INIT
     required init(viewModel: ImagesViewModel) {

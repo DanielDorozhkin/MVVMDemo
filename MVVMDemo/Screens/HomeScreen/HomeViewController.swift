@@ -17,6 +17,8 @@ final class HomeViewController: UIViewController {
     private let homeViewModel : HomeViewModel
     private var colorTapCounter : Int = 0
     
+    weak var coordinator: MainCoordinator?
+    
     //MARK: -INIT
     required init(viewModel: HomeViewModel) {
         self.homeViewModel = viewModel
@@ -76,16 +78,14 @@ final class HomeViewController: UIViewController {
     
     //MARK: -ACTION
     @IBAction private func startButtonTapped(_ sender: UIButton) {
-        let fieldVC = FieldViewController(viewModel: homeViewModel)
-        self.navigationController?.pushViewController(fieldVC, animated: true)
+        coordinator?.pushFieldScreen(homeViewModel)
     }
     
     @IBAction private func passedButtonTapped(_ sender: UIButton) {
         let currentNumber = getCurrentNumber()
         let model = ImagesViewModel(number: currentNumber)
         
-        let imagesVC = ImagesViewController(viewModel: model)
-        self.navigationController?.pushViewController(imagesVC, animated: true)
+        coordinator?.pushImagesScreen(model)
     }
     
     private func getCurrentNumber() -> Int {

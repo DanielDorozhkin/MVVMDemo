@@ -16,6 +16,7 @@ final class FieldViewController: UIViewController {
     @IBOutlet private weak var numbersTableView: UITableView!
     
     private let homeViewModel: HomeViewModel
+    weak var coordinator: MainCoordinator?
     
     //MARK: -INIT
     required init(viewModel: HomeViewModel) {
@@ -95,7 +96,7 @@ extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         homeViewModel.didSelectRowAt(indexPath: indexPath)
-        navigationController?.popViewController(animated: true)
+        coordinator?.pop()
     }
 }
 
