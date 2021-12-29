@@ -28,11 +28,18 @@ final class NetworkService {
     
     
     //MARK: -CITY
-    func searchCity(_ text: String, _ completion: @escaping ([CityModel]) -> Void) {
-        let url = "https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&q=\(text)"
+    func searchCity(_ text: String, _ completion: @escaping ([CityModel]?) -> Void) {
+        guard let url = configureUrlForSearch(text) else {
+            completion(nil)
+            return
+        }
+        
         AF.request(url).response { [weak self] data in
-            guard let data = data.data else { return }
             guard let self = self else { return }
+            guard let data = data.data else {
+                completion(nil)
+                return
+            }
             
             do {
                 let decoder = JSONDecoder()
@@ -41,11 +48,30 @@ final class NetworkService {
                 let citiesResponseArray = model.response.cities
                 let citiesArray = self.convertToCityModels(citiesResponseArray)
                 
-                completion(citiesArray)
-            } catch let parsingError {
-                print("Error", parsingError)
+                if citiesArray.count > 0 {
+                    completion(citiesArray)
+                } else {
+                    completion(nil)
+                }
+            } catch {
+                completion(nil)
             }
         }
+    }
+    
+    private func configureUrlForSearch(_ text: String) -> URL? {
+        var urlComponents = URLComponents()
+        let resourseId = "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba"
+        
+        urlComponents.scheme = "https"
+        urlComponents.host = "data.gov.il"
+        urlComponents.path = "/api/3/action/datastore_search"
+        urlComponents.queryItems = [
+           URLQueryItem(name: "resource_id", value: resourseId),
+           URLQueryItem(name: "q", value: text)
+        ]
+        
+        return urlComponents.url
     }
     
     private func convertToCityModels(_ array: [CityModelResponse]) -> [CityModel] {

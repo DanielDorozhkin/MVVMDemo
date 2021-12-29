@@ -22,10 +22,14 @@ class CitiesViewModel: FieldViewModelProtocol {
         network.searchCity(text) { [weak self] citiesArray in
             guard let self = self else { return }
             
-            citiesArray.forEach({
-                self.itemsSource.append($0.name)
-            })
-            self.fieldDelegate?.sourceState()
+            if let cities = citiesArray {
+                cities.forEach({
+                    self.itemsSource.append($0.name)
+                })
+                self.fieldDelegate?.sourceState()
+            } else {
+                self.fieldDelegate?.errorState("No search results")
+            }
         }
     }
     
