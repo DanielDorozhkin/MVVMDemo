@@ -29,9 +29,9 @@ final class NumbersViewModel: FieldViewModelProtocol {
     private func requestConfigure() {
         if let number = requestModel.validateRequest() {
             requestFor(number)
-            fieldDelegate?.appearSource()
+            fieldDelegate?.sourceState()
         } else {
-            fieldDelegate?.appearError()
+            fieldDelegate?.errorState("Request must be number and greater then 0")
         }
     }
     

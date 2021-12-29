@@ -19,8 +19,8 @@ final class FieldViewController: UIViewController {
     //MARK: -INIT
     required init(viewModel: FieldViewModelProtocol) {
         self.fieldViewModel = viewModel
-        
         super.init(nibName: nil, bundle: nil)
+        
         fieldViewModel.fieldDelegate = self
     }
     
@@ -51,7 +51,7 @@ final class FieldViewController: UIViewController {
     private func tableViewConfigure() {
         numbersTableView.register(cellType: NumberTableViewCell.self)
         
-        numbersTableView.delegate = self
+        numbersTableView.delegate   = self
         numbersTableView.dataSource = self
     }
     
@@ -62,7 +62,7 @@ final class FieldViewController: UIViewController {
         let views : [UIView] = [goButton, textField]
         views.forEach {
             $0.layer.cornerRadius = 10
-            $0.layer.borderWidth = 2
+            $0.layer.borderWidth  = 2
         }
     }
     
@@ -101,16 +101,17 @@ extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: -FIELD VIEW PROTOCOL
 extension FieldViewController: FieldViewProtocol {
-    func appearSource() {
+    func sourceState() {
         view.backgroundColor = .white
         
         numbersTableView.isHidden = false
         numbersTableView.reloadData()
     }
     
-    func appearError() {
+    func errorState(_ text: String) {
         view.backgroundColor = .red
-        
         numbersTableView.isHidden = true
+        
+        self.showAlert(text)
     }
 }

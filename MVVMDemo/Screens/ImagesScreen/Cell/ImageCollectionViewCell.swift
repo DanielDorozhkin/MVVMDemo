@@ -10,30 +10,49 @@ import Reusable
 
 final class ImageCollectionViewCell: UICollectionViewCell, NibReusable {
     
-    //MARK: -OUTLETS
+    //MARK: -Outlets
     @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
     
-    private var indexPath : Int = 0
-    private var viewModel : ImagesViewModel!
-    
+    private var indexPath      : Int = 0
+    private var viewModel      : ImagesViewModel!
     weak var imageViewDelegate : ImageViewProtocol?
     
     //MARK: -Configure
     func configure(_ model: ImagesViewModel, index: Int) {
+        showLoadingIndicator()
+        
         self.viewModel = model
         self.indexPath = index
         
         longPressRecognize()
         tapPressRecognize()
         
-        model.downloadImage({ [weak self] image in
+        model.downloadImage({ [weak self] img in
             guard let self = self else { return }
             
-            self.imageView.image = image
+            if let img = img {
+                self.hideLoadingIndicator()
+                self.imageView.image = img
+            } else {
+                self.imageViewDelegate?.appearError("Connection troubles")
+            }
         })
     }
     
-    //MARK: -Gesture recognizers
+    private func showLoadingIndicator() {
+        imageView.backgroundColor = .systemGray6
+        loadingIndicator.startAnimating()
+        loadingIndicator.isHidden = false
+    }
+    
+    private func hideLoadingIndicator() {
+        imageView.backgroundColor = .white
+        loadingIndicator.isHidden = true
+        loadingIndicator.stopAnimating()
+    }
+    
+    //MARK: -Long gesture
     private func longPressRecognize() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(deleteCell(gestureReconizer:)))
         longPress.cancelsTouchesInView = false
@@ -55,7 +74,7 @@ final class ImageCollectionViewCell: UICollectionViewCell, NibReusable {
             indexPath = itemsCount
         }
     }
-    
+    //MARK: -Tap gesture
     private func tapPressRecognize() {
         let tapPress = UITapGestureRecognizer(target: self, action: #selector(tapPressed))
         tapPress.cancelsTouchesInView = false

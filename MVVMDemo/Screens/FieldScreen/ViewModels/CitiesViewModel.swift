@@ -25,7 +25,7 @@ class CitiesViewModel: FieldViewModelProtocol {
             citiesArray.forEach({
                 self.itemsSource.append($0.name)
             })
-            self.fieldDelegate?.appearSource()
+            self.fieldDelegate?.sourceState()
         }
     }
     

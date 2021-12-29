@@ -14,11 +14,13 @@ final class NetworkService {
     static let shared = NetworkService()
     
     //MARK: -IMAGE
-    func downloadImage(_ completion: @escaping (UIImage) -> Void) {
+    func downloadImage(_ completion: @escaping (UIImage?) -> Void) {
         let randomInt = Int.random(in: 150...250)
         ImageLoader.get("https://picsum.photos/\(randomInt)", nocache: true) { result in
             if let image = result.image {
                 completion(image)
+            } else {
+                completion(nil)
             }
         }
     }

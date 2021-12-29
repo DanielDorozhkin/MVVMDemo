@@ -82,4 +82,8 @@ extension ImagesViewController: ImageViewProtocol {
         
         cellAnimation(index)
     }
+    
+    func appearError(_ text: String) {
+        self.showAlert(text)
+    }
 }

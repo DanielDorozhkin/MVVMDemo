@@ -24,7 +24,7 @@ final class ImagesViewModel {
         coordinator?.pushFieldScreen(.cities)
     }
     
-    func downloadImage(_ completion: @escaping (UIImage) -> Void) {
+    func downloadImage(_ completion: @escaping (UIImage?) -> Void) {
         network.downloadImage { img in
             completion(img)
         }
@@ -33,4 +33,5 @@ final class ImagesViewModel {
 
 protocol ImageViewProtocol: AnyObject {
     func deleteCellOn(_ indexPath: Int)
+    func appearError(_ text: String)
 }

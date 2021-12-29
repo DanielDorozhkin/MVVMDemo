@@ -22,8 +22,8 @@ protocol FieldViewModelProtocol: FieldScreenTableProtocol, AnyObject {
 }
 
 protocol FieldViewProtocol: AnyObject {
-    func appearSource()
-    func appearError()
+    func sourceState()
+    func errorState(_ text: String)
 }
 
 enum FieldViewState {

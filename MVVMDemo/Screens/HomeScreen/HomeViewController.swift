@@ -63,8 +63,9 @@ final class HomeViewController: UIViewController {
     private func passedButtonConfigure() {
         passedButton.backgroundColor    = .systemGreen
         passedButton.layer.cornerRadius = 10
+        passedButton.setTitleColor(.white, for: .normal)
         
-        passedButton.shadow()
+        passedButton.applyShadow()
     }
     
     private func clearTapsCounter() {
