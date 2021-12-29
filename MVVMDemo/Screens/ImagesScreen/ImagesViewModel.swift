@@ -13,8 +13,14 @@ import UIKit
 final class ImagesViewModel {
     var imagesCount: Int
     
+    weak var coordinator: MainCoordinator?
+    
     init(number: Int) {
         self.imagesCount = number
+    }
+    
+    func pushFieldScreen() {
+        coordinator?.pushFieldScreen(.cities)
     }
     
     func downloadImage(_ completion: @escaping (UIImage) -> Void) {

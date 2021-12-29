@@ -15,16 +15,11 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var passedButton: UIButton!
     
     private let homeViewModel : HomeViewModel
-    private var colorTapCounter : Int = 0
-    
-    weak var coordinator: MainCoordinator?
     
     //MARK: -INIT
     required init(viewModel: HomeViewModel) {
         self.homeViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
-        homeViewModel.homeDelegate = self
     }
     
     convenience init() {
@@ -46,7 +41,9 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        updateButtonsTitles()
         passedButtonAnimation()
+        clearTapsCounter()
     }
     
     //MARK: -VC CONFIGURE
@@ -59,18 +56,30 @@ final class HomeViewController: UIViewController {
         startButton.setTitleColor(.black, for: .normal)
         
         startButton.layer.cornerRadius = 10
-        startButton.layer.borderWidth = 2
-        startButton.backgroundColor = .yellow
+        startButton.layer.borderWidth  = 2
+        startButton.backgroundColor    = .yellow
     }
     
     private func passedButtonConfigure() {
-        passedButton.backgroundColor = .systemGreen
+        passedButton.backgroundColor    = .systemGreen
         passedButton.layer.cornerRadius = 10
         
         passedButton.shadow()
     }
     
+    private func clearTapsCounter() {
+        homeViewModel.colorTapCounter = 0
+    }
+    
     //MARK: -UI UPDATE
+    private func updateButtonsTitles() {
+        let goTitle   = homeViewModel.goButtonTitle ?? "Start!"
+        let passTitle = homeViewModel.passButtonTitle ?? "Data passed!"
+        
+        startButton.setTitle(goTitle, for: .normal)
+        passedButton.setTitle(passTitle, for: .normal)
+    }
+    
     private func passedButtonAnimation() {
         guard let label = self.passedButton.titleLabel else { return }
         label.pulsate()
@@ -78,24 +87,11 @@ final class HomeViewController: UIViewController {
     
     //MARK: -ACTION
     @IBAction private func startButtonTapped(_ sender: UIButton) {
-        coordinator?.pushFieldScreen(homeViewModel)
+        homeViewModel.pushFieldScreen()
     }
     
     @IBAction private func passedButtonTapped(_ sender: UIButton) {
-        let currentNumber = getCurrentNumber()
-        let model = ImagesViewModel(number: currentNumber)
-        
-        coordinator?.pushImagesScreen(model)
-    }
-    
-    private func getCurrentNumber() -> Int {
-        if let text = startButton.titleLabel?.text {
-            if let num = Int(text) {
-                return num
-            }
-        }
-        
-        return 0
+        homeViewModel.pushImagesScreen()
     }
 }
 
@@ -109,13 +105,13 @@ extension HomeViewController {
     }
     
     @objc private func tapAction() {
-        colorTapCounter += 1
+        homeViewModel.colorTapCounter += 1
         colorTapUpdate()
     }
     
     private func colorTapUpdate() {
-        if colorTapCounter == 6 {
-            colorTapCounter = 0
+        if homeViewModel.colorTapCounter == 6 {
+            homeViewModel.colorTapCounter = 0
             view.backgroundColor = .random()
         }
     }
@@ -123,7 +119,11 @@ extension HomeViewController {
 
 //MARK: -HOME PROTOCOL
 extension HomeViewController: HomeViewProtocol {
-    func updateButtonText(_ text: String) {
+    func updateHomeStartButton(_ text: String) {
         startButton.setTitle(text, for: .normal)
+    }
+    
+    func updateHomePassButton(_ text: String) {
+        passedButton.setTitle(text, for: .normal)
     }
 }

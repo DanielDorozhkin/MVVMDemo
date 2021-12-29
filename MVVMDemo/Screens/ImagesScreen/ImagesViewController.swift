@@ -72,6 +72,10 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //imageViewModel.pushFieldScreen()
+    }
 }
 
 //MARK: -IMAGE PROTOCOL

@@ -11,6 +11,11 @@
 		110332B62779DF8000694093 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110332B42779DF8000694093 /* ImagesViewController.swift */; };
 		110332B72779DF8000694093 /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110332B52779DF8000694093 /* ImagesViewController.xib */; };
 		110714BC277B411500A43F00 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110714BB277B411500A43F00 /* MainCoordinator.swift */; };
+		110714BF277B4FD500A43F00 /* FieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110714BE277B4FD500A43F00 /* FieldViewModel.swift */; };
+		110714C2277B569D00A43F00 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 110714C1277B569D00A43F00 /* Alamofire */; };
+		110714C4277B56B700A43F00 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110714C3277B56B700A43F00 /* NetworkService.swift */; };
+		110714C8277B5D8E00A43F00 /* CityModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110714C7277B5D8E00A43F00 /* CityModelResponse.swift */; };
+		110714CA277B636400A43F00 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110714C9277B636400A43F00 /* CityModel.swift */; };
 		1108E26B2779BD2C004E0C19 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26A2779BD2C004E0C19 /* RequestModel.swift */; };
 		1108E26E2779C809004E0C19 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26D2779C809004E0C19 /* UIView+.swift */; };
 		1108E2702779D221004E0C19 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26F2779D221004E0C19 /* UIColor+.swift */; };
@@ -36,6 +41,10 @@
 		110332B42779DF8000694093 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		110332B52779DF8000694093 /* ImagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesViewController.xib; sourceTree = "<group>"; };
 		110714BB277B411500A43F00 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		110714BE277B4FD500A43F00 /* FieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewModel.swift; sourceTree = "<group>"; };
+		110714C3277B56B700A43F00 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		110714C7277B5D8E00A43F00 /* CityModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModelResponse.swift; sourceTree = "<group>"; };
+		110714C9277B636400A43F00 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		1108E26A2779BD2C004E0C19 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		1108E26D2779C809004E0C19 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		1108E26F2779D221004E0C19 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -63,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110714C2277B569D00A43F00 /* Alamofire in Frameworks */,
 				110332B22779DD8800694093 /* EzImageLoader in Frameworks */,
 				11F9EF8E277A342B0018F8A6 /* Reusable in Frameworks */,
 			);
@@ -79,10 +89,29 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		110714C5277B56C100A43F00 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				110714BD277B449100A43F00 /* Coordinator */,
+				110714C6277B56C800A43F00 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		110714C6277B56C800A43F00 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				110714C3277B56B700A43F00 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		1108E26C2779BD30004E0C19 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				1108E26A2779BD2C004E0C19 /* RequestModel.swift */,
+				110714C9277B636400A43F00 /* CityModel.swift */,
+				110714C7277B5D8E00A43F00 /* CityModelResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,6 +148,7 @@
 		11CD35A42778CBE7000FDE02 /* FieldScreen */ = {
 			isa = PBXGroup;
 			children = (
+				110714BE277B4FD500A43F00 /* FieldViewModel.swift */,
 				11CD359E2778C5C9000FDE02 /* FieldViewController.swift */,
 				11CD359F2778C5C9000FDE02 /* FieldViewController.xib */,
 				11CD35AD2778D06D000FDE02 /* Cells */,
@@ -174,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				11D61A132778B155002D989E /* Info.plist */,
-				110714BD277B449100A43F00 /* Coordinator */,
+				110714C5277B56C100A43F00 /* Services */,
 				1108E26C2779BD30004E0C19 /* Models */,
 				11F9EF8B277A2B2A0018F8A6 /* Screens */,
 				11CD35982778C036000FDE02 /* Utilites */,
@@ -231,6 +261,7 @@
 			packageProductDependencies = (
 				110332B12779DD8800694093 /* EzImageLoader */,
 				11F9EF8D277A342B0018F8A6 /* Reusable */,
+				110714C1277B569D00A43F00 /* Alamofire */,
 			);
 			productName = MVVMDemo;
 			productReference = 11D61A022778B153002D989E /* MVVMDemo.app */;
@@ -263,6 +294,7 @@
 			packageReferences = (
 				110332B02779DD8800694093 /* XCRemoteSwiftPackageReference "EzImageLoader" */,
 				11F9EF8C277A342A0018F8A6 /* XCRemoteSwiftPackageReference "Reusable" */,
+				110714C0277B569D00A43F00 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 11D61A032778B153002D989E /* Products */;
 			projectDirPath = "";
@@ -296,16 +328,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				11CD35B02778D3B4000FDE02 /* NumberTableViewCell.swift in Sources */,
+				110714C8277B5D8E00A43F00 /* CityModelResponse.swift in Sources */,
 				11CD35A92778CDF9000FDE02 /* UIViewController+.swift in Sources */,
 				11D61A062778B153002D989E /* AppDelegate.swift in Sources */,
 				110332B62779DF8000694093 /* ImagesViewController.swift in Sources */,
 				11D61A082778B153002D989E /* SceneDelegate.swift in Sources */,
 				11F9EF892779F5510018F8A6 /* ImagesViewModel.swift in Sources */,
 				11CD35A02778C5C9000FDE02 /* FieldViewController.swift in Sources */,
+				110714CA277B636400A43F00 /* CityModel.swift in Sources */,
 				11F9EF832779E6F00018F8A6 /* ImageCollectionViewCell.swift in Sources */,
 				11D61A1B2778BAC5002D989E /* HomeViewController.swift in Sources */,
 				1108E26E2779C809004E0C19 /* UIView+.swift in Sources */,
+				110714C4277B56B700A43F00 /* NetworkService.swift in Sources */,
 				11CD35A62778CBF9000FDE02 /* HomeViewModel.swift in Sources */,
+				110714BF277B4FD500A43F00 /* FieldViewModel.swift in Sources */,
 				1108E26B2779BD2C004E0C19 /* RequestModel.swift in Sources */,
 				110714BC277B411500A43F00 /* MainCoordinator.swift in Sources */,
 				1108E2702779D221004E0C19 /* UIColor+.swift in Sources */,
@@ -530,6 +566,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		110714C0277B569D00A43F00 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		11F9EF8C277A342A0018F8A6 /* XCRemoteSwiftPackageReference "Reusable" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AliSoftware/Reusable.git";
@@ -545,6 +589,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 110332B02779DD8800694093 /* XCRemoteSwiftPackageReference "EzImageLoader" */;
 			productName = EzImageLoader;
+		};
+		110714C1277B569D00A43F00 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 110714C0277B569D00A43F00 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		11F9EF8D277A342B0018F8A6 /* Reusable */ = {
 			isa = XCSwiftPackageProductDependency;

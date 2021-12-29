@@ -8,44 +8,39 @@
 import Foundation
 
 final class HomeViewModel {
-    var tableSource = [String]()
-    let requestModel = RequestModel()
     
-    weak var fieldDelegate: FieldViewProtocol?
-    weak var homeDelegate: HomeViewProtocol?
+    weak var coordinator : MainCoordinator?
+    var colorTapCounter  : Int = 0
     
-    var fieldRequestString : String? {
-        return requestModel.requestString
+    var goButtonTitle    : String?
+    var passButtonTitle  : String?
+    
+    func pushFieldScreen() {
+        coordinator?.pushFieldScreen(.numbers)
     }
     
-    func sourceRequestFrom(_ text: String?) {
-        tableSource.removeAll()
-        
-        requestModel.requestString = text
-        requestConfigure()
+    func pushImagesScreen() {
+        let imagesCount = getCurrentNumber()
+        coordinator?.pushImagesScreen(imagesCount)
     }
     
-    func updateHomeScreenButton(index: Int) {
-        let number = tableSource[index]
-        let text = "\(number)"
-        
-        homeDelegate?.updateButtonText(text)
-    }
-    
-    private func requestConfigure() {
-        if let number = requestModel.validateRequest() {
-            configureSourceFrom(number)
-            fieldDelegate?.appearSource()
-        } else {
-            fieldDelegate?.appearError()
+    private func getCurrentNumber() -> Int {
+        if let text = goButtonTitle {
+            if let num = Int(text) {
+                return num
+            }
         }
+        
+        return 0
     }
     
-    private func configureSourceFrom(_ number: Int) {
-        for numberItem in Range(0...number - 1) {
-            let item = "\(numberItem)"
-            tableSource.append(item)
-        }
+    //Titles
+    func updateGoTitle(_ title: String) {
+        self.goButtonTitle = title
+    }
+    
+    func updatePassTitle(_ title: String) {
+        self.passButtonTitle = title
     }
 }
 
@@ -56,20 +51,8 @@ protocol FieldViewProtocol: AnyObject {
 }
 
 protocol HomeViewProtocol: AnyObject {
-    func updateButtonText(_ text: String)
+    func updateHomeStartButton(_ text: String)
+    func updateHomePassButton(_ text: String)
 }
 
-extension HomeViewModel: CollectionViewModelProtocol {
-    func numberOfRowsInSection(section: Int) -> Int {
-        return tableSource.count
-    }
-    
-    func didSelectRowAt(indexPath: IndexPath) {
-        self.updateHomeScreenButton(index: indexPath.row)
-    }
-}
 
-protocol CollectionViewModelProtocol {
-    func numberOfRowsInSection(section: Int) -> Int
-    func didSelectRowAt(indexPath: IndexPath)
-}

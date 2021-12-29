@@ -15,15 +15,14 @@ final class FieldViewController: UIViewController {
     
     @IBOutlet private weak var numbersTableView: UITableView!
     
-    private let homeViewModel: HomeViewModel
-    weak var coordinator: MainCoordinator?
+    private let fieldViewModel: FieldViewModelProtocol
     
     //MARK: -INIT
-    required init(viewModel: HomeViewModel) {
-        self.homeViewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+    required init(viewModel: FieldViewModelProtocol) {
+        self.fieldViewModel = viewModel
         
-        homeViewModel.fieldDelegate = self
+        super.init(nibName: nil, bundle: nil)
+        fieldViewModel.fieldDelegate = self
     }
     
     convenience init() {
@@ -70,33 +69,35 @@ final class FieldViewController: UIViewController {
     
     //MARK: -UI UPDATE
     private func UIUpdate() {
-        textField.text = homeViewModel.fieldRequestString
+        if let numberModel = fieldViewModel as? NumbersViewModel {
+            textField.text = numberModel.fieldRequestString
+        }
     }
     
     
     //MARK: -ACTION
     @IBAction private func goButtonTapped(_ sender: UIButton) {
-        homeViewModel.sourceRequestFrom(textField.text)
+        fieldViewModel.request(textField.text)
     }
 }
 
 //MARK: -TABLE VIEW
 extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeViewModel.numberOfRowsInSection(section: section)
+        return fieldViewModel.numberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : NumberTableViewCell = numbersTableView.dequeueReusableCell(for: indexPath)
-        let numberItem = homeViewModel.tableSource[indexPath.row]
+        let numberItem = fieldViewModel.itemsSource[indexPath.row]
         
         cell.configure(numberItem)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        homeViewModel.didSelectRowAt(indexPath: indexPath)
-        coordinator?.pop()
+        fieldViewModel.didSelectRowAt(indexPath: indexPath)
+        //coordinator?.pop()
     }
 }
 
