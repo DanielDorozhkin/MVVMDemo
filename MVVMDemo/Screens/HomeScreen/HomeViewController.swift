@@ -14,7 +14,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var startButton: UIButton!
     @IBOutlet private weak var passedButton: UIButton!
     
-    private let homeViewModel : HomeViewModel
+    let homeViewModel : HomeViewModel
     
     //MARK: -INIT
     required init(viewModel: HomeViewModel) {

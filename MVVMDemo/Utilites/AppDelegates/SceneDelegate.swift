@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         coordinator = MainCoordinator(navigationController: navigationController)
-        coordinator?.pushHomeScreen()
+        coordinator?.start()
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

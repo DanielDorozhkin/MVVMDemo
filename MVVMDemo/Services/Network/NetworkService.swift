@@ -15,12 +15,15 @@ final class NetworkService {
     
     //MARK: -IMAGE
     func downloadImage(_ completion: @escaping (UIImage) -> Void) {
-        ImageLoader.get("https://picsum.photos/250") { result in
+        let randomInt = Int.random(in: 150...250)
+        ImageLoader.get("https://picsum.photos/\(randomInt)", nocache: true) { result in
             if let image = result.image {
                 completion(image)
             }
         }
     }
+    
+    
     
     //MARK: -CITY
     func searchCity(_ text: String, _ completion: @escaping ([CityModel]) -> Void) {

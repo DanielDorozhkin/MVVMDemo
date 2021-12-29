@@ -46,7 +46,7 @@ final class ImagesViewController: UIViewController {
     
     //MARK: -UI UPDATE
     private func cellAnimation(_ indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+        UIView.animate(withDuration: 1, animations: { [weak self] in
             guard let self = self else { return }
             
             let cell : ImageCollectionViewCell = self.imagesCollectionView.dequeueReusableCell(for: indexPath)

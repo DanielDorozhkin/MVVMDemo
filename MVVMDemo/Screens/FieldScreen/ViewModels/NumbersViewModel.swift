@@ -42,19 +42,13 @@ final class NumbersViewModel: FieldViewModelProtocol {
         }
     }
     
-    func pushHomeScreen() {
-        coordinator?.pushHomeScreen()
-    }
-    
     func numberOfRowsInSection(section: Int) -> Int {
         return itemsSource.count
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
         let text = getNumberStringItem(index: indexPath.row)
-        coordinator?.homeViewModel.updateGoTitle(text)
-        
-        coordinator?.pop()
+        coordinator?.presentHomeScreen(passTitle: nil, goTitle: text)
     }
     
     private func getNumberStringItem(index: Int) -> String {
