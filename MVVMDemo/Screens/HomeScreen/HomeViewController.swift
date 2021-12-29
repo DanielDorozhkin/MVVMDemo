@@ -73,7 +73,7 @@ final class HomeViewController: UIViewController {
     
     //MARK: -UI UPDATE
     private func updateButtonsTitles() {
-        let goTitle   = homeViewModel.goButtonTitle ?? "Start!"
+        let goTitle   = homeViewModel.goButtonTitle   ?? "Start!"
         let passTitle = homeViewModel.passButtonTitle ?? "Data passed!"
         
         startButton.setTitle(goTitle, for: .normal)
@@ -114,16 +114,5 @@ extension HomeViewController {
             homeViewModel.colorTapCounter = 0
             view.backgroundColor = .random()
         }
-    }
-}
-
-//MARK: -HOME PROTOCOL
-extension HomeViewController: HomeViewProtocol {
-    func updateHomeStartButton(_ text: String) {
-        startButton.setTitle(text, for: .normal)
-    }
-    
-    func updateHomePassButton(_ text: String) {
-        passedButton.setTitle(text, for: .normal)
     }
 }

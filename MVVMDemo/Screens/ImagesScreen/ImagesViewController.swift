@@ -13,7 +13,7 @@ final class ImagesViewController: UIViewController {
     @IBOutlet private weak var imagesCollectionView: UICollectionView!
     
     private let imageViewModel : ImagesViewModel
-    weak var coordinator: MainCoordinator?
+    weak var coordinator       : MainCoordinator?
     
     //MARK: -INIT
     required init(viewModel: ImagesViewModel) {
@@ -38,7 +38,7 @@ final class ImagesViewController: UIViewController {
     
     //MARK: -VC CONFIGURE
     private func collectionConfigure() {
-        imagesCollectionView.delegate = self
+        imagesCollectionView.delegate   = self
         imagesCollectionView.dataSource = self
         
         imagesCollectionView.register(cellType: ImageCollectionViewCell.self)
@@ -71,10 +71,6 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.configure(imageViewModel, index: indexPath.row)
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //imageViewModel.pushFieldScreen()
     }
 }
 

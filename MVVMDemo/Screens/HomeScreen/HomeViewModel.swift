@@ -34,7 +34,6 @@ final class HomeViewModel {
         return 0
     }
     
-    //Titles
     func updateGoTitle(_ title: String) {
         self.goButtonTitle = title
     }
@@ -43,16 +42,3 @@ final class HomeViewModel {
         self.passButtonTitle = title
     }
 }
-
-//MARK: -PROTOCOLS
-protocol FieldViewProtocol: AnyObject {
-    func appearSource()
-    func appearError()
-}
-
-protocol HomeViewProtocol: AnyObject {
-    func updateHomeStartButton(_ text: String)
-    func updateHomePassButton(_ text: String)
-}
-
-

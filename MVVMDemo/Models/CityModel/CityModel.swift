@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CityModel {
+final class CityModel {
     let name : String
     
     init(_ name: String) {

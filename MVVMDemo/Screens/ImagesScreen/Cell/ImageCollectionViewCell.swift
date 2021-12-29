@@ -34,7 +34,6 @@ final class ImageCollectionViewCell: UICollectionViewCell, NibReusable {
     }
     
     //MARK: -Gesture recognizers
-    //Long press
     private func longPressRecognize() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(deleteCell(gestureReconizer:)))
         longPress.cancelsTouchesInView = false
@@ -57,7 +56,6 @@ final class ImageCollectionViewCell: UICollectionViewCell, NibReusable {
         }
     }
     
-    //Tap press
     private func tapPressRecognize() {
         let tapPress = UITapGestureRecognizer(target: self, action: #selector(tapPressed))
         tapPress.cancelsTouchesInView = false

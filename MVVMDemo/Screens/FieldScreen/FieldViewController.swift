@@ -10,9 +10,8 @@ import UIKit
 final class FieldViewController: UIViewController {
     
     //MARK: -OUTLETS
-    @IBOutlet private weak var textField: UITextField!
-    @IBOutlet private weak var goButton: UIButton!
-    
+    @IBOutlet private weak var textField:        UITextField!
+    @IBOutlet private weak var goButton:         UIButton!
     @IBOutlet private weak var numbersTableView: UITableView!
     
     private let fieldViewModel: FieldViewModelProtocol
@@ -97,7 +96,6 @@ extension FieldViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         fieldViewModel.didSelectRowAt(indexPath: indexPath)
-        //coordinator?.pop()
     }
 }
 

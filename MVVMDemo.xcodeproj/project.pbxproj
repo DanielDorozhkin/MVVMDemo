@@ -19,6 +19,8 @@
 		1108E26B2779BD2C004E0C19 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26A2779BD2C004E0C19 /* RequestModel.swift */; };
 		1108E26E2779C809004E0C19 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26D2779C809004E0C19 /* UIView+.swift */; };
 		1108E2702779D221004E0C19 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108E26F2779D221004E0C19 /* UIColor+.swift */; };
+		11AABC82277C6E310050DF79 /* NumbersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AABC81277C6E310050DF79 /* NumbersViewModel.swift */; };
+		11AABC85277C6E770050DF79 /* CitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AABC84277C6E770050DF79 /* CitiesViewModel.swift */; };
 		11CD35A02778C5C9000FDE02 /* FieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CD359E2778C5C9000FDE02 /* FieldViewController.swift */; };
 		11CD35A12778C5C9000FDE02 /* FieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11CD359F2778C5C9000FDE02 /* FieldViewController.xib */; };
 		11CD35A62778CBF9000FDE02 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CD35A52778CBF9000FDE02 /* HomeViewModel.swift */; };
@@ -48,6 +50,8 @@
 		1108E26A2779BD2C004E0C19 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		1108E26D2779C809004E0C19 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		1108E26F2779D221004E0C19 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		11AABC81277C6E310050DF79 /* NumbersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersViewModel.swift; sourceTree = "<group>"; };
+		11AABC84277C6E770050DF79 /* CitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewModel.swift; sourceTree = "<group>"; };
 		11CD359E2778C5C9000FDE02 /* FieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewController.swift; sourceTree = "<group>"; };
 		11CD359F2778C5C9000FDE02 /* FieldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FieldViewController.xib; sourceTree = "<group>"; };
 		11CD35A52778CBF9000FDE02 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -110,10 +114,28 @@
 			isa = PBXGroup;
 			children = (
 				1108E26A2779BD2C004E0C19 /* RequestModel.swift */,
+				11AABC86277C6EB50050DF79 /* CityModel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		11AABC83277C6E530050DF79 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				110714BE277B4FD500A43F00 /* FieldViewModel.swift */,
+				11AABC81277C6E310050DF79 /* NumbersViewModel.swift */,
+				11AABC84277C6E770050DF79 /* CitiesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		11AABC86277C6EB50050DF79 /* CityModel */ = {
+			isa = PBXGroup;
+			children = (
 				110714C9277B636400A43F00 /* CityModel.swift */,
 				110714C7277B5D8E00A43F00 /* CityModelResponse.swift */,
 			);
-			path = Models;
+			path = CityModel;
 			sourceTree = "<group>";
 		};
 		11CD35982778C036000FDE02 /* Utilites */ = {
@@ -148,7 +170,7 @@
 		11CD35A42778CBE7000FDE02 /* FieldScreen */ = {
 			isa = PBXGroup;
 			children = (
-				110714BE277B4FD500A43F00 /* FieldViewModel.swift */,
+				11AABC83277C6E530050DF79 /* ViewModels */,
 				11CD359E2778C5C9000FDE02 /* FieldViewController.swift */,
 				11CD359F2778C5C9000FDE02 /* FieldViewController.xib */,
 				11CD35AD2778D06D000FDE02 /* Cells */,
@@ -328,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11CD35B02778D3B4000FDE02 /* NumberTableViewCell.swift in Sources */,
+				11AABC82277C6E310050DF79 /* NumbersViewModel.swift in Sources */,
 				110714C8277B5D8E00A43F00 /* CityModelResponse.swift in Sources */,
 				11CD35A92778CDF9000FDE02 /* UIViewController+.swift in Sources */,
 				11D61A062778B153002D989E /* AppDelegate.swift in Sources */,
@@ -335,6 +358,7 @@
 				11D61A082778B153002D989E /* SceneDelegate.swift in Sources */,
 				11F9EF892779F5510018F8A6 /* ImagesViewModel.swift in Sources */,
 				11CD35A02778C5C9000FDE02 /* FieldViewController.swift in Sources */,
+				11AABC85277C6E770050DF79 /* CitiesViewModel.swift in Sources */,
 				110714CA277B636400A43F00 /* CityModel.swift in Sources */,
 				11F9EF832779E6F00018F8A6 /* ImageCollectionViewCell.swift in Sources */,
 				11D61A1B2778BAC5002D989E /* HomeViewController.swift in Sources */,

@@ -10,7 +10,7 @@ import Alamofire
 import EzImageLoader
 import EzHTTP
 
-class NetworkService {
+final class NetworkService {
     static let shared = NetworkService()
     
     //MARK: -IMAGE

@@ -11,9 +11,10 @@ import EzHTTP
 import UIKit
 
 final class ImagesViewModel {
+    weak var coordinator: MainCoordinator?
     var imagesCount: Int
     
-    weak var coordinator: MainCoordinator?
+    private let network = NetworkService.shared
     
     init(number: Int) {
         self.imagesCount = number
@@ -24,10 +25,8 @@ final class ImagesViewModel {
     }
     
     func downloadImage(_ completion: @escaping (UIImage) -> Void) {
-        ImageLoader.get("https://picsum.photos/250") { result in
-            if let image = result.image {
-                completion(image)
-            }
+        network.downloadImage { img in
+            completion(img)
         }
     }
 }

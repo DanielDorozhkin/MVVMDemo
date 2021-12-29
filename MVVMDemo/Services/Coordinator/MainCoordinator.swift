@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-class MainCoordinator {
-    var navigationController: UINavigationController
+final class MainCoordinator {
     
     let homeViewModel = HomeViewModel()
+    private var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -42,8 +42,8 @@ class MainCoordinator {
     func pushImagesScreen(_ count: Int) {
         let model = ImagesViewModel(number: count)
         model.coordinator = self
-        let imagesVC = ImagesViewController(viewModel: model)
         
+        let imagesVC = ImagesViewController(viewModel: model)
         navigationController.pushViewController(imagesVC, animated: true)
     }
     
